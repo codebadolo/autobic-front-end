@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Topbar from "./components/Topbar";
+import CoursPage from "./pages/CoursPage";
+
+import DashboardPage from "./pages/DashboardPage";
+import EmployesPage from "./pages/EmployesPage";
+import ParticipantsPage from "./pages/ParticipantsPage";
+import SessionsPage from "./pages/SessionsPage";
+
+import BudgetPage from "./pages/BudgetPage";
+import DemandesPage from "./pages/DemandesPage";
+import DepartementsPage from "./pages/DepartementsPage";
+import FacturesPage from "./pages/FacturesPage";
+// ...autres imports
+
+import "./App.css";
 
 function App() {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Sidebar
+        collapsed={sidebarCollapsed}
+        onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+      />
+      <Topbar sidebarCollapsed={sidebarCollapsed} />
+      <div className={`main-content${sidebarCollapsed ? " collapsed" : ""}`}>
+        <Routes>
+            <Route path="/" element={<DashboardPage sidebarCollapsed={sidebarCollapsed} />} />
+          <Route path="/cours" element={<CoursPage />} />
+          <Route path="/sessions" element={<SessionsPage sidebarCollapsed={sidebarCollapsed} />} />
+          <Route path="/employes" element={<EmployesPage sidebarCollapsed={sidebarCollapsed} />} />
+<Route path="/participants" element={<ParticipantsPage sidebarCollapsed={sidebarCollapsed} />} />
+<Route path="/demandes" element={<DemandesPage sidebarCollapsed={sidebarCollapsed} />} />
+<Route path="/factures" element={<FacturesPage sidebarCollapsed={sidebarCollapsed} />} />
+<Route path="/departements" element={<DepartementsPage sidebarCollapsed={sidebarCollapsed} />} />
+<Route path="/budget" element={<BudgetPage sidebarCollapsed={sidebarCollapsed} />} />
+          {/* autres routes */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -1,0 +1,28 @@
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.styled-table th, .styled-table td {
+  padding: 0.9em 1.2em;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.styled-table th {
+  background: #003366;
+  color: #fff;
+}
+
+.styled-table tr:last-child td {
+  border-bottom: none;
+}
+
+.styled-table tr:hover {
+  background: #f1f7ff;
+}

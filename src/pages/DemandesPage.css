@@ -1,0 +1,32 @@
+.demandes-page {
+  margin-left: 20px;
+  margin-top: 64px;
+  padding: 2rem;
+  background: #f4f6f8;
+  min-height: 100vh;
+  transition: margin-left 0.2s;
+}
+.demandes-page.collapsed { margin-left: 80px; }
+.demandes-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.btn-add { background: #003366; color: #fff; padding: 0.7em 1.4em; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+.btn-add:hover { background: #0055aa; }
+.demandes-filters { display: flex; gap: 2rem; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; }
+.input-search { display: flex; align-items: center; background: #fff; border-radius: 8px; padding: 0.5em 1em; box-shadow: 0 2px 8px rgba(0,0,0,0.03); gap: 0.5em; }
+.input-search input { border: none; outline: none; font-size: 1em; background: transparent; margin-left: 0.5em; width: 220px; }
+.select-filters { display: flex; align-items: center; gap: 1em; }
+.select-filters label { font-size: 1em; color: #003366; margin-right: 0.4em; }
+.select-filters select { padding: 0.4em 0.8em; border-radius: 6px; border: 1px solid #b0b0b0; font-size: 1em; background: #fff; color: #003366; }
+.demandes-table-container { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); overflow-x: auto; }
+.demandes-table { width: 100%; border-collapse: collapse; min-width: 900px; }
+.demandes-table th, .demandes-table td { padding: 1em 1.2em; border-bottom: 1px solid #e0e0e0; text-align: left; }
+.demandes-table th { background: #003366; color: #fff; font-weight: 600; }
+.demandes-table tr:last-child td { border-bottom: none; }
+.demandes-table tr:hover { background: #f1f7ff; transition: background 0.2s; }
+.badge { padding: 0.3em 0.8em; border-radius: 12px; font-size: 0.95em; font-weight: 500; display: inline-block; color: #fff; }
+.badge-en_attente { background: #ff9900; }
+.badge-validée { background: #2ecc40; }
+.badge-refusée { background: #ff4136; }
+.btn-action { background: none; border: none; cursor: pointer; font-size: 1.3em; margin-right: 0.5em; transition: color 0.2s; vertical-align: middle; }
+.btn-action.edit { color: #0074d9; }
+.btn-action.delete { color: #ff4136; }
+.btn-action:hover { opacity: 0.7; }

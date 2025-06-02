@@ -1,0 +1,18 @@
+.departements-page {
+  margin-left: 20px;
+  margin-top: 64px;
+  padding: 2rem;
+  background: #f4f6f8;
+  min-height: 100vh;
+  transition: margin-left 0.2s;
+}
+.departements-page.collapsed { margin-left: 80px; }
+.departements-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.btn-add { background: #003366; color: #fff; padding: 0.7em 1.4em; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+.btn-add:hover { background: #0055aa; }
+.departements-table-container { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); overflow-x: auto; }
+.departements-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+.departements-table th, .departements-table td { padding: 1em 1.2em; border-bottom: 1px solid #e0e0e0; text-align: left; }
+.departements-table th { background: #003366; color: #fff; font-weight: 600; }
+.departements-table tr:last-child td { border-bottom: none; }
+.departements-table tr:hover { background: #f1f7ff; transition: background 0.2s; }
