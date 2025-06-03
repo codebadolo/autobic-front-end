@@ -30,3 +30,119 @@
 .btn-action.edit { color: #0074d9; }
 .btn-action.delete { color: #ff4136; }
 .btn-action:hover { opacity: 0.7; }
+
+
+/* Overlay sombre couvrant toute la page */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* fond semi-transparent */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Contenu de la modale */
+.modal-content {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #003366;
+}
+
+/* Bouton de fermeture en haut à droite */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #003366;
+}
+
+/* Formulaire dans la modale */
+.demande-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #0055aa;
+}
+
+.demande-form input[type="date"],
+.demande-form input[type="number"],
+.demande-form select,
+.demande-form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.demande-form input[type="date"]:focus,
+.demande-form input[type="number"]:focus,
+.demande-form select:focus,
+.demande-form textarea:focus {
+  border-color: #003366;
+  outline: none;
+}
+
+.demande-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.form-actions button {
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.form-actions button[type="submit"] {
+  background-color: #003366;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+  background-color: #0055aa;
+}
+
+.form-actions button[type="button"] {
+  background-color: #ccc;
+  color: #333;
+}
+
+.form-actions button[type="button"]:hover {
+  background-color: #999;
+}

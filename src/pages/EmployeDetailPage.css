@@ -1,0 +1,57 @@
+.employe-detail-page {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  background-color: #f9faff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 51, 102, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #003366;
+}
+
+.employe-detail-page h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #002244;
+}
+
+.employe-detail-page button {
+  display: block;
+  margin: 0 auto 2rem auto;
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.employe-detail-page button:hover {
+  background-color: #0055aa;
+}
+
+.employe-detail-page table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employe-detail-page td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #d1d9e6;
+  font-size: 1rem;
+}
+
+.employe-detail-page td:first-child {
+  font-weight: 600;
+  width: 40%;
+  color: #0055aa;
+  background-color: #e6f0ff;
+}
+
+.employe-detail-page td:last-child {
+  color: #333;
+}
