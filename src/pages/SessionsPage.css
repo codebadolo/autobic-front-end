@@ -300,6 +300,7 @@ dialog button[aria-label="Fermer la modale"]:hover {
     width: 100%;
   }
 
+  
   .sessions-table {
     font-size: 0.85rem;
   }
