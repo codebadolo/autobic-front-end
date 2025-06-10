@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
 import PrivateRoute from "./components/PrivateRoute";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
-
 import AdminAddUserPage from "./pages/AdminAddUserPage";
 import CoursPage from "./pages/CoursPage";
 import Dashboard from "./pages/Dashboard";

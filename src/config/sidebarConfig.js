@@ -1,6 +1,6 @@
 import {
-    MdAccountBalance, MdAttachMoney, MdBusiness, MdDashboard, MdEvent,
-    MdMenuBook, MdPeople, MdRequestQuote, MdSecurity
+  MdAccountBalance, MdAttachMoney, MdBusiness, MdDashboard, MdEvent,
+  MdMenuBook, MdPeople, MdRequestQuote, MdSecurity
 } from "react-icons/md";
 
 export const sidebarMenus = {
@@ -32,7 +32,7 @@ export const sidebarMenus = {
   ADMIN: [
     { to: "/", label: "Dashboard", icon: MdDashboard },
     { to: "/admin/add-user", label: "Créer Utilisateur", icon: MdPeople },
-    { to: "/admin/utilisateurs", label: "Utilisateurs", icon: MdPeople },
+  
     { to: "/cours", label: "Cours", icon: MdMenuBook },
     { to: "/sessions", label: "Sessions", icon: MdEvent },
     { to: "/employes", label: "Employés", icon: MdPeople },
