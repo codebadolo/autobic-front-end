@@ -1,11 +1,14 @@
 .main-content {
-  margin-left: 200px;  /* largeur du sidebar ouvert */
-  margin-top: 64px;    /* hauteur du topbar */
   transition: margin-left 0.2s;
-  padding: 2rem;
-  min-height: 100vh;
-  background: #f4f6f8;
+  margin-left: 220px;
+  padding: 2rem 1.5rem;
 }
 .main-content.collapsed {
-  margin-left: 40px;   /* 70px (sidebar fermé) + 10px d'espace */
+  margin-left: 70px;
+}
+@media (max-width: 800px) {
+  .main-content, .main-content.collapsed {
+    margin-left: 0;
+    padding: 1rem 0.5rem;
+  }
 }

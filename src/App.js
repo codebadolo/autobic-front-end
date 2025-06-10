@@ -1,49 +1,138 @@
 import { useState } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
+
+import AdminAddUserPage from "./pages/AdminAddUserPage";
 import CoursPage from "./pages/CoursPage";
-import DashboardPage from "./pages/DashboardPage";
-import DemandeDetailPage from "./pages/DemandeDetailPage";
+import Dashboard from "./pages/Dashboard";
+import DemandesFormationPage from "./pages/DemandesFormationPage";
+import DepartementsPage from "./pages/DepartementsPage";
 import EmployesPage from "./pages/EmployesPage";
+import EtatBudgetPage from "./pages/EtatBudgetPage";
+import FacturesPage from "./pages/FacturesPage";
+import LignesBudgetPage from "./pages/LignesBudgetPage";
+import LoginPage from "./pages/LoginPage";
+import OrganismesPage from "./pages/OrganismesPage";
 import ParticipantsPage from "./pages/ParticipantsPage";
 import SessionsPage from "./pages/SessionsPage";
 
-import BudgetPage from "./pages/BudgetPage";
-import DemandesPage from "./pages/DemandesPage";
-import DepartementsPage from "./pages/DepartementsPage";
-import FacturesPage from "./pages/FacturesPage";
-// ...autres imports
-
-import "./App.css";
-
-import EmployeDetailPage from "./pages/EmployeDetailPage"; // importe ta page détail employé
-
 function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const token = localStorage.getItem("token");
 
   return (
     <Router>
-      <Sidebar
-        collapsed={sidebarCollapsed}
-        onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
-      />
-      <Topbar sidebarCollapsed={sidebarCollapsed} />
+      {token && (
+        <Sidebar
+          collapsed={sidebarCollapsed}
+          onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+        />
+      )}
+      {token && <Topbar sidebarCollapsed={sidebarCollapsed} />}
       <div className={`main-content${sidebarCollapsed ? " collapsed" : ""}`}>
         <Routes>
-          <Route path="/" element={<DashboardPage sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/cours" element={<CoursPage />} />
-          <Route path="/sessions" element={<SessionsPage sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/employes" element={<EmployesPage sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/employes/:matricule" element={<EmployeDetailPage sidebarCollapsed={sidebarCollapsed} />} /> {/* <-- Nouvelle route */}
-          <Route path="/participants" element={<ParticipantsPage sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/demandes" element={<DemandesPage sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/factures" element={<FacturesPage sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/departements" element={<DepartementsPage sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/budget" element={<BudgetPage sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/demandes-formation/:id" element={<DemandeDetailPage sidebarCollapsed={sidebarCollapsed} />}  />
-
-          {/* autres routes */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/cours"
+            element={
+              <PrivateRoute>
+                <CoursPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/sessions"
+            element={
+              <PrivateRoute>
+                <SessionsPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/employes"
+            element={
+              <PrivateRoute>
+                <EmployesPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/participants"
+            element={
+              <PrivateRoute>
+                <ParticipantsPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/demandes"
+            element={
+              <PrivateRoute>
+                <DemandesFormationPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/factures"
+            element={
+              <PrivateRoute>
+                <FacturesPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/departements"
+            element={
+              <PrivateRoute>
+                <DepartementsPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/etat-budget"
+            element={
+              <PrivateRoute>
+                <EtatBudgetPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/lignes-budget"
+            element={
+              <PrivateRoute>
+                <LignesBudgetPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/organismes"
+            element={
+              <PrivateRoute>
+                <OrganismesPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin/add-user"
+            element={
+              <PrivateRoute requiredRole="ADMIN">
+                <AdminAddUserPage sidebarCollapsed={sidebarCollapsed} />
+              </PrivateRoute>
+            }
+          />
+          {/* Ajoute d'autres routes ici */}
+          <Route path="/" element={<Navigate to={token ? "/dashboard" : "/login"} />} />
+          <Route path="*" element={<div>404 - Page non trouvée</div>} />
         </Routes>
       </div>
     </Router>
