@@ -5,9 +5,9 @@ import PrivateRoute from "./components/PrivateRoute";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import AdminAddUserPage from "./pages/AdminAddUserPage";
+import AdminDemandesPage from "./pages/AdminDemandesPage";
 import CoursPage from "./pages/CoursPage";
 import Dashboard from "./pages/Dashboard";
-import DemandesFormationPage from "./pages/DemandesFormationPage";
 import DepartementsPage from "./pages/DepartementsPage";
 import EmployesPage from "./pages/EmployesPage";
 import EtatBudgetPage from "./pages/EtatBudgetPage";
@@ -78,7 +78,7 @@ function App() {
             path="/demandes"
             element={
               <PrivateRoute>
-                <DemandesFormationPage sidebarCollapsed={sidebarCollapsed} />
+                <AdminDemandesPage sidebarCollapsed={sidebarCollapsed} />
               </PrivateRoute>
             }
           />

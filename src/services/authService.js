@@ -1,14 +1,6 @@
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-const API_URL = "http://localhost:8080/api/auth"; // adapte si besoin
-
-export function login(username, password) {
-  return axios.post(`${API_URL}/login`, { username, password });
-}
-export function register(user) {
-  return axios.post(`${API_URL}/register`, user);
-}
 
 const AuthContext = createContext();
 
@@ -17,25 +9,35 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const navigate = useNavigate();
 
+  // Intercepteur axios pour injecter le token dans chaque requête
+  useEffect(() => {
+    const requestInterceptor = axios.interceptors.request.use(
+      config => {
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+      },
+      error => Promise.reject(error)
+    );
+    return () => {
+      axios.interceptors.request.eject(requestInterceptor);
+    };
+  }, [token]);
+
   const login = async (credentials) => {
     try {
-      const res = await fetch("http://localhost:8080/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(credentials),
+      const response = await axios.post("http://localhost:8080/api/auth/login", credentials, {
+        headers: { "Content-Type": "application/json" }
       });
-      const data = await res.json();
-      if (res.ok) {
-        setUser(data.user);
-        setToken(data.token);
-        localStorage.setItem("token", data.token);
-        navigate("/dashboard");
-      } else {
-        throw new Error(data.message || "Erreur de connexion");
-      }
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
+      const data = response.data;
+      setUser(data.user || null);
+      setToken(data.token || "");
+      localStorage.setItem("token", data.token);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Erreur de connexion :", error.response?.data?.message || error.message);
+      throw new Error(error.response?.data?.message || "Erreur de connexion");
     }
   };
 
